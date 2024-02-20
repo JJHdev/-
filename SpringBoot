@@ -2,11 +2,58 @@
 1. Java 11 버전
 2. IDE : IntelliJ
 
+----------------------------------------------------------------------------
+기억 할 내용
 -. springBoot사이트에서 
-   Spring-Web , Thymeleaf로 의존성 설정, 
+   Spring-Web , Thymeleaf로 의존성 설정, --> 이 두개만 가져와도 의존성이 연결된 다른 라이브러리들도 가져와서 문제 크게 없음.
    InteliJ에서는 build.gradle 선택하여 open 선택 
 
-error---------
+-. SpringBoot에서 처음에 resources폴더 > statci > index.html 먼저 확인
+
+-. thymeleaf 템플릿 엔진은 templates/리턴.html 우선 찾음.
+
+-. springboot는 주소 요청시 @controller에서 매핑해서 찾고 없을 경우 static 폴더에서 기본적으로 찾는다. (static에서 찾을 경우 정적 컨텐츠)
+
+-. @ResponseBody : http 에서 body에 return에 내용을 직접 입력하겠다. --> 객체를 넘길 경우 (api 방식) : Json방식 {"key":"value"} 방식으로 데이터 전달.
+  -> xml 방식은 무겁지만 , api방식인 Json 방식은 빠르다. 요즘은 거의다 Json 방식으로 전달
+  -> Controller에서 매핑된 값을 찾아 viewResolver에서 넘겨 처리 하지만 @ResponseBody가 있을 경우 HTTP에 그대로 넘길려고 한다.
+  -> @ResponseBody 에서  HttpMessageConverter로 보내고 String을 넘기면 StringHttpMessageConverter 넘겨 그대로 넘기고 
+     객체를 넘기면 MappingJackson2HttpMessageConverter 에 넘겨 Json방식으로 데이터를 만들어서 HTTP응답에 반환 함.
+
+-. ctrl + shift + enter -=> intellij 에서 미완성 문장 완성해준다.
+
+
+----------------------------------------------------------------------------
+error
+
 1. IntelliJ에서는 Setting에서 Java Jdk 설정되어 있는 버전으로 실행되어 Gradle 에서 설정과 맞아야 한다.
 
+
+----------------------------------------------------------------------------
+Curiosity
+
+1. spring-boot-starter-logging
+ -> logback , slf4j (평상시 톰캣 로그보면서 어떤 라이브러리 인지 궁금했는데 로그 관련 라이브러리 였음)
+2. 예전 프로젝트 진행시 서버단 수정할때 서버 재시작 없이 view파일 변경이 가능했는데. spirng-boot-devtools 라이브러리 이용한 거였음.
+콘솔로 이동
+----------------------------------------------------------------------------
+gradle 개발 도구 없이 빌드 하기
+
+3. ./gradlew build
+ 3-1. cd build/libs
+ 3-2. java -jar hello-spring-0.0.1-SNAPSHOT.jar
+
+ 4. 실행 확인윈도우 사용자를 위한 팁
+  콘솔로 이동 명령 프롬프트(cmd)로 이동
+  ./gradlew gradlew.bat 를 실행하면 됩니다.
+  명령 프롬프트에서 gradlew.bat 를 실행하려면 gradlew 하고 엔터를 치면 됩니다.
+  gradlew build
+  폴더 목록 확인 ls dir
+  윈도우에서 Git bash 터미널 사용하기
+ 4-1. cd build/libs
+ 4-2. dir로 파일 확인
+ 4-3. java -jar ~~~~~~~.jar 파일 실행
+ 4-4. 프로젝트 있는 폴더 까지 온다음 (gradlew.bat 실행한 곳) ->> gradlew clean or gradlew clean build 
+     clean (build 폴더 삭제)
+----------------------------------------------------------------------------
 
