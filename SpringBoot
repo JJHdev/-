@@ -1,0 +1,12 @@
+환경 설정 내용
+1. Java 11 버전
+2. IDE : IntelliJ
+
+-. springBoot사이트에서 
+   Spring-Web , Thymeleaf로 의존성 설정, 
+   InteliJ에서는 build.gradle 선택하여 open 선택 
+
+error---------
+1. IntelliJ에서는 Setting에서 Java Jdk 설정되어 있는 버전으로 실행되어 Gradle 에서 설정과 맞아야 한다.
+
+
