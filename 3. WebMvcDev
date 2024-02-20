@@ -1,1 +1,50 @@
-1. 
+1. @Component (@Controller, @Service, @Repository) 등록을 해야 스프링 빈에 등록되어 @AutoWired 등 사용할 수 있다.
+
+2. 스프링 빈을 등록 하는 2가지 방법 (스프링 빈 스캔 대상은 @SpringBootApplicationm 어노테이션이 가지는 클래스에서 관련된 패키지만 을 스캔하는데 설정으로 바꿀수 있긴 하다.)
+  2-1. 컴포넌트 스캔과 자동 의존관계 설정 
+  2-1-1. @Controller, @Service, @Repository, 등 어노테이션으로 등록 하며, 생성자에서 DI관계인 부분에서도 자동으로 스캔하여 스프링 빈에 등록된다.
+  2-1-2. 그리하여 @AutoWired를 사용하면 각 스프링 빈에 등록된 어노테이션들을 선으로 연결하여 각자 연결되어 사용할 수 있게 해주는 것이다.
+
+  2-2. 자바코드로 직접 스프링 빈 등록하기.
+  2-2-1. Class 중 @Configuration을 스프링에서 찾는다. 찾은 후 안에 @Bean을 찾아 스프링 빈에 등록 한다. 
+  2-2-2. @Controller은 스프링에서 관리 하기때문에 어쩔수 없이 @Controller로 구현해야한다.
+
+'''
+@Configuration
+public class SpringConfig {
+  @Bean
+  public MemberService memberService(){
+    return new MemberService ( memberRepository() );
+  }
+
+  @Bean
+  public MemberRepository memberRepository(){
+    return new MemoryMemberRepository
+  }
+}
+
+'''
+
+ 1. 생성자 주입  (요즘 사용하는 추세이다.)
+  @Autowired
+  public MemberController(MemberService memberService){
+    this.memberService = memberService;
+  }
+
+ 2. 필드주입    (추후 변경하기 어려워 사용하기 애매하다.)
+  @Autowired
+  private MemberService memberService;
+
+ 3. setter 주입  (한번 셋팅하고 나면 바꾸기 힘들어진다.)
+  @Autowired
+  public void setMemberService(MemberService memberSerivce){
+    this.memberService =memberService;
+  }
+
+
+----------------------------------------------------
+error
+1. IntelliJ에서 Run이 비활성화 되어 안보이는 경우가 있는데 우측 상단에서 서버표시 클릭 후 Edit Configurations 클릭 후 >> Application
+  -> 서버 구동 이름 작성 후
+  -> Main Class 부분에 Sgift + Enter 하면 현재 메인 클래스 목록이 뜰것이다. 
+  -> <no module> 부분은 클릭하면 원하는 폴더를 선택하여 Run 활성화를 시킬수 있는 버튼을 구현할 수 있다.
