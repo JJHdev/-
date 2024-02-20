@@ -84,6 +84,9 @@
  -. class명 선택 후 ctrl + shift + T create Test >> 자동으로 유닛테스트 코드 만들어 준다.
  -. shift + f10 >> 전에 실행 했던 테스트 다시 재시
 
+
+-----------------------
+서비스 개발 TEST 코드
 '''
 package hell.hellospring.repository;
 
