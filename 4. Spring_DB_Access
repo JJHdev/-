@@ -24,4 +24,14 @@
   ->> DB접속 없이 TEST 하는것 (단위테스트) -- DB접속 없이 단위테스트로 이뤄진 것이 좋은 케이스다.
   ->> DB접속 하고 TEST 하는것 (통합테스트)
 
+4. JPA
+  -. SQL문도 직접 작성해줘서 편하게 사용할 수 있다.
+  -. domain에서 @Entity를 클래스에 붙이면 JPA에 매핑된다.
+  -. @Id > Key값 컬럼 /  @GeneratedValue(strategy = GenerationType.IDENTITY) >> Seq등 Db에서 자동적으로 입력해주는 것
+  -. @Column(name = "컬럼")
+  -. JPA 라이브러리 다운 받으면 EntityManager 같은 것 들을 생성해준다.
+
+5. SpringData JPA
+  -. findByName(String name); 등과 같이 find 찾다 by name 과 같이 스프링데이터 JPA 에서 select m from member m where name =: name; 이렇게 해준다.
+
 
