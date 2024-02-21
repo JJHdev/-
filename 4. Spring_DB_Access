@@ -5,4 +5,11 @@
   -. JPA
   -. 스프링 데이터 JPA
 
-2. 
+2. @Configuration을 하면 SpringBean에서 관리한다. 그리고 DataSource를 @AutoWired를 하면 
+   Spring에서 자체적으로 application.properties등 자체적으로 관리하는 곳에서 
+  '''
+    spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+    spring.datasource.driver-classs-name=org.h2.Driver
+    spring.datasource.username=sa
+  '''
+   관련 내용을 dataSource로 자동적으로 매핑해준다.
