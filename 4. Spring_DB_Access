@@ -13,3 +13,15 @@
     spring.datasource.username=sa
   '''
    관련 내용을 dataSource로 자동적으로 매핑해준다.
+
+3. totalTest
+  -. TestCase에서 
+    @SpringBootTest    detail : 스프링컨테이너와 테스트를 함께 실행한다.
+    @Transactional     detail : Test용으로 사용할 것 이니, commit하지않고 진행된 것을 tranjection roolback을 진행 하게 해준다.
+                                한개의 test를 하고 roolback 한다.
+  두개의 어노테이션을 추가한다.
+
+  ->> DB접속 없이 TEST 하는것 (단위테스트) -- DB접속 없이 단위테스트로 이뤄진 것이 좋은 케이스다.
+  ->> DB접속 하고 TEST 하는것 (통합테스트)
+
+
