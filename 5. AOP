@@ -1,0 +1,13 @@
+1. 공통 관심사항 - 시간을 재는등 모든 공통 툴
+2. 핵심 관심사항 - 로직 실행하는 곳
+
+AOP는 공통 관심사항과 핵심 관심사항을 나눠놓은것 
+ -. @Aspect 어노테이션이 있는 class에 사용할수 있다.
+ -. @Around("execution(* hello.hellospring..*(..))")  --> 원하는 적용사항을 선택 할 수 있다.
+ -. @Component >> class를 Spring Bean에 등록해야 사용가능
+
+ -. AOP 적용전 전체 알고리즘
+   -. controller -> 실제 service -> 실제 memberRepository
+ -. AOP 적용 후 전체 알고리즘
+   -. 프록시(임시복제)controller -> 실제 controller -> 프록시service -> 실제service -> 프록시repository -> 실제 repository
+   -. 프록시를 만들어서 aop 적용 후 실행 후 joinPoint.proceed();가 있는 부분이 실행 되면 실제를 실행하게 된다.
