@@ -1,0 +1,71 @@
+1. 스프링 웹 개발 기초
+  1.1 localhost:8080/hello-static.html로 조회시 >> WAS >> 1. hello-static 관련 컨트롤러가 있는가? 찾기. 없을 경우 >> resources/static/hello-static.html 정적 리소스 찾기 >> Was를 거쳐 웹브라우저에전달.
+    -. 컨트롤로러 url 매핑하는게 정적파일보다 우선순위가 높다.
+  1.2 @ResponseBody를 사용하고, 객체를 return하면 객체가 Json으로 변환되어 발송됨.
+
+2. 스프링 빈과 의존관계
+  2.1  @Autowired
+      public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+      }
+      생성자에 @AutoWired가 있으면 스프링이 연관된 객체를 스프링 컨테이너에서 찾아서 의존관계를 맺어준다. 
+  2.2 스프링 빈을 등록하는 2가지 방법 
+      -> 컴포넌트 스캔과 자동 의존관계 설정 
+      -> 자바 코드로 직접 스프링 빈 등록하기
+
+  2.3 컴포넌트 스캔의 원리
+      @Component 애노테이션이 있으면 스프링 빈으로 자동 등록된다.
+      @Controller, @Service, @Repository 가 스프링 빈으로 자동 등록된 이유도 컴포넌트 스캔 때문이다.
+
+  2.4 자바 코드로 직접 스프링 빈 등록하기
+      @Configuration
+      public class SpringConfig {
+        @Bean
+        public MemberService memberService() {
+          return new MemberService(memberRepository());
+        }
+      
+        @Bean
+        public MemberRepository memberRepository() {
+          return new MemoryMemberRepository();
+        }
+      }
+
+5. 회원 관리 예제 -웹 MVC 개발
+
+
+
+
+6. 스프링 DB 접근 기술
+
+
+
+
+7. AOP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
